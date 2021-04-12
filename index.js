@@ -6,10 +6,17 @@ async function getCurrencies(){
     createTableOfValues(currencies);
 }
 function createTableOfValues(currencies){
-    let table = '<table cellpadding="0px" cellspacing="10px">';
+    //tabela temporaria - para fins de teste
+    let table = '<table cellpadding="0px" cellspacing="0px">';
     table += '<tr><th>código</th><th>moeda</th><th>valor</th></tr>';
+    for (const currency of Object.values(currencies)){
+        table += '<tr>'
+        table += `<td>${currency.code}</td><td>${currency.name}</td><td>${currency.high}</td></td>`
+        table += '</tr>'
+        console.log(currency);
+    }
     table += '</table>';
-    document.write(table);
+    document.querySelector('body').innerHTML = table;
 }
 
 getCurrencies();
