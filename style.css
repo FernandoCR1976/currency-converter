@@ -1,11 +1,43 @@
 @charset "UTF-8";
 
 body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
     box-sizing: border-box;
 }
-table{
-    width: 50vw;
+#converter{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
 }
-td, th{
-    border: 1px solid black;
+#converter div{
+    display: flex;
+    flex-direction: row;
+    margin:  auto 5vw;   
+}
+input{
+    font-size: 100%;
+    width: 30vmin;
+    height: 5vmin;
+}
+
+
+
+
+/*------------*/
+
+table{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    color: rgba(0, 0, 0, 0.144);
+    background-color: transparent;
+}
+table:hover{
+    color: rgba(0, 0, 0, 0.794);
+}
+option{
+    color: black;
 }
