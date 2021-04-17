@@ -1,50 +1,51 @@
 let currentCurrencies;
 
-async function getCurrencies(){
+async function getCurrenciesNames(){
     fetch('https://economia.awesomeapi.com.br/json/all')
     .then(Response => Response.json().then(data => {
         createCurrencyOptions(data);
-        logCurrencies(data);
-        currentCurrencies = data;
     }))
     .catch(() => {
         console.log('error to get currencies\ntrying again...');
-        getCurrencies();
+        getCurrenciesNames();
     });
 }
 function createCurrencyOptions(currencies){
     const selectElements = document.querySelectorAll('.currencyType');
-    for (const {code} of Object.values(currencies)){
+    for (const {code, name} of Object.values(currencies)){
         selectElements.forEach(function(selectElement){
             const tag = document.createElement('option');
             tag.setAttribute('value', code);
-            tag.innerText = code;
+            tag.setAttribute('title', name.split('/')[0]);
+            tag.innerText = name.split('/')[0];
             selectElement.appendChild(tag);
         });
     }
-}
-function logCurrencies(currencies){
-    console.table(currencies);
-}
-function addListnerToInput(){
-    document.getElementsByClassName('currencyInput')[0].addEventListener('input', convertCurrency);
 }
 function convertCurrency() {
     const inputElements = document.querySelectorAll('.currencyInput');
     const currencyInputElements = document.querySelectorAll('.currencyType');
     const inputValue = inputElements[0].value;
-    const outputValue = convert(
+    convert(
         currencyInputElements[0].value,
         inputValue,
-        currencyInputElements[1].value);
-    inputElements[1].value = outputValue;
-
+        currencyInputElements[1].value
+        );
     function convert(from, val, to){
-        if (from && to){
-            console.log(`from: ${from}\nvalue: ${val}\nto: to: ${to}`);
-            return 0;
+        if (from == to) return
+        try{
+            fetch(`https://economia.awesomeapi.com.br/last/${from}-${to}`)
+            .then(Response => Response.json()
+                .then(data => {
+                    console.log(data[`${from}${to}`]);
+                    inputElements[1].value = (data[`${from}${to}`].high * val).toFixed(2);
+                })
+                .catch())
+            .catch((e) => console.error(e));
+        } catch {
+            console.error();
         }
     }
 }
-getCurrencies();
-addListnerToInput();
+
+getCurrenciesNames();

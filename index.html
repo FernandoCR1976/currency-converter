@@ -15,13 +15,16 @@
     <div id="converter">
         <div>
             <select class="currencyType"></select>
-            <input class="currencyInput" type="number">
+            <input class="currencyInput" type="number" min="0">
         </div>
         <img width="30vmin" src="https://cdn0.iconfinder.com/data/icons/feather/96/591276-arrow-right-512.png" alt="para" title="Converter para">
         <div>
-            <input class="currencyInput" type="number" readonly>
+            <input class="currencyInput" type="text" readonly>
             <select class="currencyType"></select>
         </div>
+    </div>
+    <div>
+        <div id="convert" onclick="convertCurrency();">convert</div>
     </div>
 </body>
 </html>
