@@ -9,10 +9,8 @@ async function getCurreciesInformations(){
         .then(Response => Response.json().then(data => {
             localStorage.setItem('currencyInfos', JSON.stringify(data.results));
             getCurreciesInformations();
-        }))
-        .catch(() => {
-            showErrorScreen();
-        });
+        }).catch(() => showErrorScreen()))
+        .catch(() => showErrorScreen());
     }
 }
 function createCurrencyOptions(currencies){
@@ -37,7 +35,7 @@ function convertCurrency() {
         );
     function convert(from, val, to){
         if (from == to || !val) return
-        
+
         const symbols = JSON.parse(localStorage.getItem('currencyInfos'));
         try {
             fetch(`https://free.currconv.com/api/v7/convert?q=${from}_${to}&compact=ultra&apiKey=${freeAPIKey}`)
