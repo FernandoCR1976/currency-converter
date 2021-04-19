@@ -36,7 +36,8 @@ function convertCurrency() {
         currencyInputElements[1].value
         );
     function convert(from, val, to){
-        if (from == to) return
+        if (from == to || !val) return
+        
         const symbols = JSON.parse(localStorage.getItem('currencyInfos'));
         try {
             fetch(`https://free.currconv.com/api/v7/convert?q=${from}_${to}&compact=ultra&apiKey=${freeAPIKey}`)
@@ -44,9 +45,9 @@ function convertCurrency() {
                 .then(data => {
                     let valueFormatted;
                     if (symbols[to].currencySymbol && symbols[to].currencySymbol.length < 3){
-                        valueFormatted = symbols[to].currencySymbol + (data[`${from}_${to}`] * val).toFixed(2);
+                        valueFormatted = symbols[to].currencySymbol + " " + (data[`${from}_${to}`] * val).toFixed(2);
                     } else {
-                        valueFormatted = (data[`${from}_${to}`] * val).toFixed(2) + symbols[to].id;
+                        valueFormatted = (data[`${from}_${to}`] * val).toFixed(2) + " " + symbols[to].id;
                     }   
                     inputElements[1].value = valueFormatted
                 })

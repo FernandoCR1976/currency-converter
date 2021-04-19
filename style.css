@@ -59,6 +59,6 @@ select{
 }
 .show{
     display: flex;
-    transition: ease-in-out .5s;
+    transition: ease-in-out .3s;
     opacity: 1;
 }
