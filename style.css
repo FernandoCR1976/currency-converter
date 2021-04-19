@@ -44,15 +44,6 @@ input{
 select{
     width: 10vw;
 }
-option{
-    height: 500px;
-}
-body div:nth-child(4){
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 50px;
-}
 #convert-button{
     user-select: none;
     outline: none;
