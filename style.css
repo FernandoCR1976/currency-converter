@@ -1,18 +1,21 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap');
 
 body{
-    font-family: sans-serif, Arial;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     box-sizing: border-box;
     height:100vh;
-    background: linear-gradient(-45deg, rgb(255, 255, 255), rgb(162, 197, 187));
 }
 body div {
-    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+#title{
+    text-align: center;
 }
 #converter{
     width: 100vw;
@@ -23,26 +26,47 @@ body div {
 #converter div{
     display: flex;
     flex-direction: row;
-    margin:  auto 5vw;   
+    margin: auto 5vw;
+}
+#arrow{
+    transform: rotateZ(180deg);
+}
+input, select, option{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
 }
 input{
     font-size: 100%;
     width: 30vmin;
-    height: 5vmin;
+    height: 2vmin;
+    padding: 1em;
 }
 select{
     width: 10vw;
 }
-#convert{
-    user-select: none;
-    display: flex;
+option{
+    height: 500px;
+}
+body div:nth-child(4){
+    display:flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5vw;
-    width: 10vw;
-    height: 10vw;
-    border-radius: 50%;
-    background: linear-gradient(to top left, rgb(2, 162, 255), rgb(0, 248, 153));
+    padding-left: 50px;
+}
+#convert-button{
+    user-select: none;
+    outline: none;
+    border:none;
+    font-weight: 400;
+    font-size: 1.5em;
+    padding: 2% 3%;
+    border-radius: 5px;
+    background-color: rgb(160, 160, 160);
+    transition: ease-in-out .3s;
+}
+#convert-button:hover{
+    background-color: rgb(218, 218, 218);
+    color: rgb(51, 51, 51);
 }
 .error-message{
     display: none;
@@ -54,11 +78,42 @@ select{
     opacity: 0;
     width:100vw;
     height: 100vh;
-    background-color: rgb(218, 218, 218);
+    background-color: rgb(235, 232, 232);
     font-size: 2em;
+}
+.error-message div{
+    margin: 15vw;
+    padding: 5vw;
+    background-color: rgb(191, 191, 191);
 }
 .show{
     display: flex;
     transition: ease-in-out .3s;
     opacity: 1;
+}
+@media (orientation: portrait){
+    #arrow{
+        transform: rotateZ(-90deg);
+    }
+    body div {
+        margin-bottom: 10vh;
+    }
+    #converter{
+        width: 100vw;
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
+    #converter div{
+        margin-bottom: 3vh;
+        margin-top: 3vh;
+    }
+    select{
+        width: 25vw;
+    }
+    #converter div:last-child{
+        display: flex;
+        flex-direction: row-reverse;
+    }
 }
