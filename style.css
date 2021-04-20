@@ -98,13 +98,12 @@ select {
     opacity:1;
 }
 @keyframes appear {
-from {
-    transform:translate(0,5vh);
-    opacity:0;
-}
-
-to {
-transform:translate(0,0vh);
-opacity:1;
-}
+    from {
+        transform:translate(0,5vh);
+        opacity:0;
+    }
+    to {
+        transform:translate(0,0vh);
+        opacity:1;
+    }
 }
