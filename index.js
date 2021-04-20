@@ -2,10 +2,7 @@ const freeAPIKey = '6eb74eb3f0325b10d40d';
 
 async function getCurreciesInformations(){
     if (!!localStorage.getItem('currencyInfos')){
-        const currenciesData = localStorage.getItem('currencyInfos');
-        createCurrencyOptions(JSON.parse(currenciesData));
-        orderMoreFamousCurrencyOptions();
-        addEventListeners();
+        start();
     } else {
         fetch(`https://free.currconv.com/api/v7/currencies?apiKey=${freeAPIKey}`)
         .then(Response => Response.json().then(data => {
@@ -14,6 +11,14 @@ async function getCurreciesInformations(){
         }).catch(() => showErrorScreen()))
         .catch(() => showErrorScreen());
     }
+}
+function start(){
+    const currenciesData = JSON.parse(localStorage.getItem('currencyInfos'));
+    createCurrencyOptions(currenciesData);
+    selectRealAndDollarCurrencies();
+    addInicialValueToInput();
+    addEventListeners();
+    convertCurrency();
 }
 function createCurrencyOptions(currencies){
     const selectElements = document.querySelectorAll('.currencyType');
@@ -26,8 +31,19 @@ function createCurrencyOptions(currencies){
         });
     }
 }
-function sortCurrencyOptionsByAlphabeticalOrder(){
-    console.log('organizando por ordem alfabética...');
+function selectRealAndDollarCurrencies(){
+    const originOptions = document.querySelectorAll('#currency-origin option');
+    const destinyOptions = document.querySelectorAll('#currency-destiny option');
+    originOptions[8].setAttribute('selected', 'true');
+    destinyOptions[120].setAttribute('selected', 'true');
+}
+function addInicialValueToInput(){
+    document.querySelectorAll('.currencyInput')[0].value = 1;
+}
+function addEventListeners(){
+    document.getElementsByClassName('currencyType')[0].addEventListener('change', insertFlags);
+    document.getElementsByClassName('currencyType')[1].addEventListener('change', insertFlags);
+    document.getElementById('convert-button').addEventListener('click', convertCurrency);
 }
 function insertFlags(){
     const currency = this.value;
@@ -55,9 +71,6 @@ function insertFlags(){
         }
     }
 }
-function orderMoreFamousCurrencyOptions(){
-
-}
 function convertCurrency() {
     const inputElements = document.getElementsByClassName('currencyInput');
     const currencyInputElements = document.getElementsByClassName('currencyType');
@@ -75,11 +88,12 @@ function convertCurrency() {
         .then(Response => Response.json()
             .then(data => {
                 const conversion = (data[`${from}_${to}`] * val).toFixed(2);
+                const currencySymbol = symbols[to].currencySymbol;
                 let valueFormatted;
-                if (symbols[to].currencySymbol && symbols[to].currencySymbol.length < 3) {
-                    valueFormatted = symbols[to].currencySymbol + " " + conversion;
+                if (currencySymbol && currencySymbol.length < 3) {
+                    valueFormatted = currencySymbol + " " + conversion;
                 } else {
-                    valueFormatted = conversion + " " + symbols[to].id;
+                    valueFormatted = conversion + " " + currencySymbol;
                 }
                 inputElements[1].value = valueFormatted
             })
@@ -90,11 +104,6 @@ function convertCurrency() {
 function showErrorScreen(){
     const errorMessageDiv = document.getElementsByClassName('error-message')[0];
     errorMessageDiv.classList.add('show');
-}
-function addEventListeners(){
-    document.getElementsByClassName('currencyType')[0].addEventListener('blur', insertFlags);
-    document.getElementsByClassName('currencyType')[1].addEventListener('blur', insertFlags);
-    document.getElementById('convert-button').addEventListener('click', convertCurrency);
 }
 
 getCurreciesInformations();
