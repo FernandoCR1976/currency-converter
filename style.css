@@ -1,109 +1,110 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap');
 
-body{
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 800;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
+body {
+    font-family:'Open Sans',sans-serif;
+    font-weight:800;
+    overflow-x:hidden;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    box-sizing:border-box;
     height:100vh;
 }
 body div {
-    margin-bottom: 10vh;
+    margin-bottom:10vh;
 }
-#title{
-    text-align: center;
+#title {
+    text-align:center;
 }
-#converter{
-    margin-bottom: 5vh;
-    width: 100vw;
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-}
-#converter div{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 3vh;
-    margin-top: 3vh;
-}
-.flags{
+#converter {
+    margin-bottom:5vh;
+    width:100vw;
     display:flex;
-    justify-content: center;
-    align-items: center;
-    width: 10vw;
-    margin: 0px !important;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+#converter div {
+    display:flex;
+    flex-direction:row;
+    margin-bottom:3vh;
+    margin-top:3vh;
+}
+.flags {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:10vw;
+    margin:0!important;
 }
 .flags img {
-    width: 5vw;
-    border: none;
-    animation: appear 1s ease 0s forwards normal none;
-}
-#arrow{
-    transform: rotateZ(-90deg);
-}
-input, select, option{
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-}
-input{
-    font-size: 100%;
-    width: 30vmin;
-    height: 2vmin;
-    padding: 1em;
-}
-select{
-    width: 25vw;
-}
-#convert-button{
-    user-select: none;
-    outline: none;
+    width:5vw;
     border:none;
-    font-weight: 400;
-    font-size: 1.5em;
-    padding: 2% 3%;
-    border-radius: 5px;
-    background-color: rgb(160, 160, 160);
-    transition: ease-in-out .3s;
+    animation:appear 1s ease 0s forwards normal none;
 }
-#convert-button:hover{
-    background-color: rgb(218, 218, 218);
-    color: rgb(51, 51, 51);
+#arrow {
+    transform:rotateZ(-90deg);
 }
-.error-message{
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    opacity: 0;
+input,select,option {
+    font-family:'Open Sans',sans-serif;
+    font-weight:400;
+}
+input {
+    font-size:100%;
+    width:30vmin;
+    height:2vmin;
+    padding:1em;
+}
+select {
+    width:25vw;
+}
+#convert-button {
+    user-select:none;
+    outline:none;
+    border:none;
+    font-weight:400;
+    font-size:1.5em;
+    padding:2% 3%;
+    border-radius:5px;
+    background-color:rgb(160,160,160);
+    transition:ease-in-out .3s;
+}
+#convert-button:hover {
+    background-color:rgb(218,218,218);
+    color:rgb(51,51,51);
+}
+.error-message {
+    display:none;
+    justify-content:center;
+    align-items:center;
+    position:absolute;
+    right:0;
+    top:0;
+    opacity:0;
     width:100vw;
-    height: 100vh;
-    background-color: rgb(235, 232, 232);
-    font-size: 2em;
+    height:100vh;
+    background-color:rgb(235,232,232);
+    font-size:2em;
 }
-.error-message div{
-    margin: 15vw;
-    padding: 5vw;
-    background-color: rgb(191, 191, 191);
+.error-message div {
+    margin:15vw;
+    padding:5vw;
+    background-color:rgb(191,191,191);
 }
-.show{
-    display: flex;
-    transition: ease-in-out .3s;
-    opacity: 1;
+.show {
+    display:flex;
+    transition:ease-in-out .3s;
+    opacity:1;
 }
 @keyframes appear {
-    from{
-        transform: translate(0, 5vh);
-        opacity: 0;
-    }
-    to{
-        transform: translate(0, 0vh);
-        opacity: 1;
-    }
+from {
+    transform:translate(0,5vh);
+    opacity:0;
+}
+
+to {
+transform:translate(0,0vh);
+opacity:1;
+}
 }
