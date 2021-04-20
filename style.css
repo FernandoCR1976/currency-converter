@@ -12,24 +12,39 @@ body{
     height:100vh;
 }
 body div {
-    margin-bottom: 5vh;
+    margin-bottom: 10vh;
 }
 #title{
     text-align: center;
 }
 #converter{
+    margin-bottom: 5vh;
     width: 100vw;
     display: flex;
+    flex-direction:column;
     justify-content: center;
-    margin-bottom: 5vh;
+    align-items: center;
 }
 #converter div{
     display: flex;
     flex-direction: row;
-    margin: auto 5vw;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+}
+.flags{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+    margin: 0px !important;
+}
+.flags img {
+    width: 5vw;
+    border: none;
+    animation: appear 1s ease 0s forwards normal none;
 }
 #arrow{
-    transform: rotateZ(180deg);
+    transform: rotateZ(-90deg);
 }
 input, select, option{
     font-family: 'Open Sans', sans-serif;
@@ -42,7 +57,7 @@ input{
     padding: 1em;
 }
 select{
-    width: 10vw;
+    width: 25vw;
 }
 #convert-button{
     user-select: none;
@@ -82,29 +97,13 @@ select{
     transition: ease-in-out .3s;
     opacity: 1;
 }
-@media (orientation: portrait){
-    #arrow{
-        transform: rotateZ(-90deg);
+@keyframes appear {
+    from{
+        transform: translate(0, 5vh);
+        opacity: 0;
     }
-    body div {
-        margin-bottom: 10vh;
-    }
-    #converter{
-        width: 100vw;
-        display: flex;
-        flex-direction:column;
-        justify-content: center;
-        align-items: center;
-    }
-    #converter div{
-        margin-bottom: 3vh;
-        margin-top: 3vh;
-    }
-    select{
-        width: 25vw;
-    }
-    #converter div:last-child{
-        display: flex;
-        flex-direction: row-reverse;
+    to{
+        transform: translate(0, 0vh);
+        opacity: 1;
     }
 }

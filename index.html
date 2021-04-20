@@ -15,16 +15,18 @@
     </div>
     <div id="converter">
         <div>
-            <select class="currencyType"></select>
+            <div class="flags" id="flag-origin"></div>
+            <select class="currencyType" id="currency-origin"></select>
             <input class="currencyInput" type="number" min="1" placeholder="value">
         </div>
         <img src="arrow.svg" alt="for / para" width="20px" id="arrow">
         <div>
+            <div class="flags" id="flag-destiny"></div>
+            <select class="currencyType" id="currency-destiny"></select>
             <input class="currencyInput" type="text" readonly placeholder="?">
-            <select class="currencyType"></select>
         </div>
     </div>
-    <button id="convert-button" onclick="convertCurrency();">convert</button>
+    <button id="convert-button">convert</button>
     <div class="error-message">
         <div>
             Este site está tendo muitas visitas. Por favor volte mais tarde
