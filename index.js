@@ -90,10 +90,14 @@ function convertCurrency() {
                 const conversion = (data[`${from}_${to}`] * val).toFixed(2);
                 const currencySymbol = symbols[to].currencySymbol;
                 let valueFormatted;
-                if (currencySymbol && currencySymbol.length < 3) {
-                    valueFormatted = currencySymbol + " " + conversion;
+                if (currencySymbol){
+                    if (currencySymbol.length < 3) {
+                        valueFormatted = currencySymbol + " " + conversion;
+                    } else {
+                        valueFormatted = conversion + " " + currencySymbol;
+                    }
                 } else {
-                    valueFormatted = conversion + " " + currencySymbol;
+                    valueFormatted = conversion;
                 }
                 inputElements[1].value = valueFormatted
             })
